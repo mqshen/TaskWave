@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TodolistAddViewController : UIViewController
+@interface MessageAddViewController : UIViewController
 
 @property (nonatomic) int projectId;
 

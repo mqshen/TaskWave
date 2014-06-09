@@ -10,4 +10,6 @@
 
 @protocol TabSelectDelegate <NSObject>
 
+- (void) tabselect:(NSUInteger) index;
+
 @end

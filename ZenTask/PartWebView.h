@@ -10,4 +10,6 @@
 
 @interface PartWebView : UIWebView
 
+-(void) setContnet:(NSString *) content;
+
 @end

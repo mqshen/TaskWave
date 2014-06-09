@@ -18,7 +18,7 @@
 
 @end
 
-@implementation TodoAddViewController
+@implementation TodolistAddViewController
 
 @synthesize projectId;
 
@@ -55,7 +55,7 @@
     
     self.nameInputView = [[UITextField alloc] initWithFrame:inputFrame];
     self.nameInputView.tintColor = [UIColor blackColor];
-    [itemView addSubview:self.inputView];
+    [itemView addSubview:self.nameInputView];
     self.nameInputView.delegate = self;
     
     [self.view addSubview:itemView];
@@ -72,7 +72,7 @@
     
     self.descriptionInputView = [[UITextField alloc] initWithFrame:inputFrame];
     self.descriptionInputView.tintColor = [UIColor blackColor];
-    [itemView addSubview:self.inputView];
+    [itemView addSubview:self.descriptionInputView];
     self.descriptionInputView.delegate = self;
     
     [self.view addSubview:itemView];
@@ -86,7 +86,7 @@
     //[confirmButton setTitleColor:UIColorFromRGB(0X88D86C) forState:UIControlStateNormal];
     //[confirmButton.layer setMasksToBounds:YES];
     //[confirmButton.layer setBorderColor:UIColorFromRGB(0X88D86C).CGColor];
-    confirmButton.backgroundColor = UIColorFromRGB(0xff0000);
+    confirmButton.backgroundColor = BUTTON_COLOR;
     
     [confirmButton addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchUpInside];
     
@@ -103,9 +103,9 @@
 - (void) confirm
 {
     Session *session = [Session getInstance];
-    NSInteger currentTeamId = session.teamId;
+    long currentTeamId = session.teamId;
     
-    NSString *url = [NSString stringWithFormat:@"%d/project/%d/comment", currentTeamId, self.projectId];
+    NSString *url = [NSString stringWithFormat:@"%ld/project/%d/todolist", (long)currentTeamId, self.projectId];
     NSDictionary *requestData = [[NSDictionary alloc] initWithObjectsAndKeys: self.nameInputView.text, @"name",
                                  self.descriptionInputView.text, @"description",
                                  nil];
@@ -113,13 +113,19 @@
     [HttpConnection initWithRequestURL:url
                             httpMethod:@"post"
                            requestDate:requestData
-                         successAction:^(id todolists) {
+                         successAction:^(id todolist) {
                              NSArray *viewControllers = [self.navigationController viewControllers];
                              ProjectViewController *projectViewController = [viewControllers objectAtIndex:[viewControllers count] -   2];
-                             [projectViewController addObject:todolists withType:TODO_LIST];
+                             [projectViewController addObject:todolist withType:TODO_LIST];
+                             [self.navigationController popViewControllerAnimated:YES];
                          }];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 /*
 #pragma mark - Navigation
 

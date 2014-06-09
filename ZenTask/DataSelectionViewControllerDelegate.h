@@ -10,4 +10,6 @@
 
 @protocol DataSelectionViewControllerDelegate <NSObject>
 
+-(void) setData:(id) index;
+
 @end

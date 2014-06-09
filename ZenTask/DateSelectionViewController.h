@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectionViewController.h"
 
-@interface DateSelectionViewController : UIViewController
+@interface DateSelectionViewController : SelectionViewController
+
+@property (nonatomic, strong) UIDatePicker *datePicker;
 
 @end

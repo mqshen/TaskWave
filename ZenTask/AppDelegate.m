@@ -7,17 +7,83 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "KeyBoardTopBar.h"
+#import "CalendarViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    LoginViewController *vc = [[LoginViewController alloc] init];
+    //CalendarViewController *vc = [[CalendarViewController alloc] init];
+    
+    
+    //leftMenu.view.backgroundColor = [UIColor blueColor];
+	
+    
+    
+    self.window.rootViewController = vc;
+    
+    
+    UIColor *navigationColor = NAVBAR_COLOR;
+    
+    [[UINavigationBar appearance] setBarTintColor:navigationColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+	
+    // Override point for customization after application launch.
+    self.window.tintColor = [UIColor whiteColor];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWillChange:)
+//                                                 name:UIKeyboardWillChangeFrameNotification
+//                                               object:nil];
+//    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidChangeFrame:) name:UIKeyboardDidChangeFrameNotification object:nil];
+    
     return YES;
 }
+//
+//- (void) keyboardWillChange:(NSNotification *) notification
+//{
+//    KeyBoardTopBar *keyboardbar = [KeyBoardTopBar getInstance];
+//    if (![keyboardbar isShown]) {
+//        return;
+//    }
+//    
+//    // Get the keyboard rect
+//    CGRect kbBeginrect = [[[notification userInfo]
+//                           objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+//    CGRect kbEndrect   = [[[notification userInfo]
+//                           objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    NSTimeInterval duration = [[[notification userInfo]
+//                                
+//                                objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+//    UIViewAnimationCurve curve = (UIViewAnimationCurve)[[notification userInfo]
+//                                                        objectForKey:UIKeyboardAnimationCurveUserInfoKey];
+//    
+//    // set animation
+//    CGRect rect = keyboardbar.view.frame;
+//    double height_change = kbEndrect.origin.y - kbBeginrect.origin.y ;
+//    rect.origin.y += height_change;
+//    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:duration];
+//    [UIView setAnimationCurve:curve];
+//    keyboardbar.view.frame = rect;
+//
+//    //[keyboardbar showBar:textView];
+//}
+//
+//-(void)keyboardDidChangeFrame:(NSNotification*)notification
+//{
+//    [UIView commitAnimations];
+//}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

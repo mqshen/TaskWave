@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Session : NSObject
+@interface Session : NSObject{
+    NSArray *projects;
+    NSInteger teamId;
+}
+
+@property(retain) NSArray *projects;
+@property(assign) NSInteger teamId;
++(Session *)getInstance;
 
 @end

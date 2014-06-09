@@ -9,7 +9,6 @@
 #import "SlideNavViewController.h"
 #import "SlideNavigationContorllerAnimatorSlide.h"
 #import "ViewControllerChangeDelegate.h"
-#import "CRNavigationController.h"
 #import "../MenuViewController.h"
 #import "MainViewController.h"
 
@@ -60,15 +59,7 @@
         
         
         
-        
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"menu" ofType:@"png"];
-        UIImage* image = [[UIImage alloc] initWithContentsOfFile:imagePath];
-        UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:image
-                                                                       style:UIBarButtonItemStylePlain
-                                                                      target:self
-                                                                      action:@selector(openMenu)];
         //[self.view addSubview:menuButton];
-        centerViewController.navigationItem.leftBarButtonItem = menuButton;
         
         //[self.centerViewController.navigationItem setLeftBarButtonItem:menuButton animated:YES];
         
@@ -145,7 +136,6 @@
 
 -(void) closeMenuWithDuration:(float)duration andCompletion:(void (^)())completion
 {
-    //NSLog(@"close menu");
     [UIView animateWithDuration:duration
 						  delay:0
 						options:UIViewAnimationOptionCurveEaseOut
@@ -181,7 +171,6 @@
         }
         case UIGestureRecognizerStateChanged:{
             CGFloat interval = [self location];
-            //NSLog(@"menuOpen:%d, movement:%d, interval:%f", self.menuOpen, movement, interval);
             interval += movement;
             
             

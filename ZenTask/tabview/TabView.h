@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TabSelectDelegate.h"
 
 @interface TabView : UIView
+
+@property (weak) id<TabSelectDelegate> delegate;
+@property(assign) NSUInteger selected;
+
+- (id)initWithFrame:(CGRect)frame andTabNames:(NSArray *) names;
+
+- (void) setSelect:(NSUInteger) index;
 
 @end

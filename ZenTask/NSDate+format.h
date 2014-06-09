@@ -8,5 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDate(fomat)
+@interface NSDate(format)
+- (NSString *)format;
 @end

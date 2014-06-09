@@ -10,4 +10,9 @@
 
 @interface TabCell : UIControl
 
+@property(strong) NSString *name;
+@property (nonatomic, readwrite, getter = isChecked) BOOL checked;
+@property (nonatomic, strong) UIColor *tintColor;
+@property (nonatomic, strong) UIColor *textColor;
+
 @end

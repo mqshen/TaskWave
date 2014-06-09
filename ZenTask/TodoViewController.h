@@ -10,4 +10,7 @@
 
 @interface TodoViewController : UITableViewController
 
+@property (assign) long projectId;
+@property (assign) long todolistId;
+
 @end

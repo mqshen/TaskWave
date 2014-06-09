@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ObjectAddProtocol.h"
 
-@interface TodolistViewController : UIViewController
+@interface TodolistViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, ObjectAddProtocol>
+
+@property (nonatomic) long projectId;
+@property (weak) UIViewController* rootViewController;
 
 @end

@@ -6,8 +6,15 @@
 //  Copyright (c) 2014 GoldRatio. All rights reserved.
 //
 
-#import "NSDate.h"
+#import "NSDate+format.h"
 
-@implementation NSDate
+@implementation NSDate(format)
+
+- (NSString *)format
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:ASSIGN_DATE_FOMAT];
+    return [dateFormatter stringFromDate:self];
+}
 
 @end

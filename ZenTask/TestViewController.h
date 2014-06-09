@@ -1,5 +1,5 @@
 //
-//  TodoAddViewController.h
+//  TestViewController.h
 //  ZenTask
 //
 //  Created by GoldRatio on 6/3/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TodoAddViewController : UIViewController
+@interface TestViewController : UIViewController
 
 @end

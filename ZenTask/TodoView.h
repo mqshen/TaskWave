@@ -10,4 +10,8 @@
 
 @interface TodoView : UIView
 
+@property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) NSString* worker;
+@property (nonatomic, strong) NSDate* deadline;
+
 @end

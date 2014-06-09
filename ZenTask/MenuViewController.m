@@ -8,8 +8,7 @@
 
 #import "MenuViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "SettingViewController.h"
-#import "Config.h"
+#import "MainViewController.h"
 #import "CalendarViewController.h"
 
 @interface MenuViewController ()
@@ -148,13 +147,13 @@
             [delegate changeViewController:viewController];
             break;
         case 1:
-            viewController = [[CalendarViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            viewController = [[CalendarViewController alloc] init];
             [delegate changeViewController:viewController];
             break;
-        case 2:
-            viewController = [[SettingViewController alloc] init];
-            [delegate changeViewController:viewController];
-            break;
+//        case 2:
+//            viewController = [[SettingViewController alloc] init];
+//            [delegate changeViewController:viewController];
+//            break;
         default:
             break;
     }

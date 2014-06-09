@@ -77,64 +77,37 @@
     }
     
     // Draw the checkbox
-//    {
-//        const CGFloat strokeWidth = 0.068359375f * size;
-//        const CGFloat checkBoxInset = 0.171875f * size;
-//        
-//        CGRect checkboxRect = CGRectMake(checkBoxInset, checkBoxInset, size - checkBoxInset*2, size - checkBoxInset*2);
-//        UIBezierPath *checkboxPath = [UIBezierPath bezierPathWithRect:checkboxRect];
-//        
-//        [checkboxPath applyTransform:transform];
-//        
-//        if (!self.tintColor)
-//            self.tintColor = [UIColor colorWithWhite:0.5f alpha:1.0f];
-//        [self.tintColor setStroke];
-//        
-//        checkboxPath.lineWidth = strokeWidth;
-//        
-//        [checkboxPath stroke];
-//    }
+    
     
     // Draw the checkmark if self.checked==YES
-    if (self.checked)
-    {
-        // The checkmark is drawn as a bezier path using Quartz2D.
-        // The control points for this path are stored (hardcoded) as normalized
-        // values so that the path can be accurately reconstructed at any size.
-        
-        // A small macro to scale the normalized control points for the
-        // checkmark bezier path to the size of the control.
-#define P(POINT) (POINT * size)
-        
+    if (self.checked) {
         //CGContextSetGrayFillColor(context, 0.0f, 1.0f);
         if (self.tintColor) {
             CGContextSetFillColorWithColor(context, self.tintColor.CGColor);
         }
-        CGContextConcatCTM(context, transform);
-        
-        CGContextBeginPath(context);
-//        CGContextMoveToPoint(context, P(0.304f), P(0.425f));
-//        CGContextAddLineToPoint(context, P(0.396f), P(0.361f));
-//        CGContextAddLineToPoint(context, P(0.5f), P(0.511f));
-//        CGContextAddLineToPoint(context, P(0.988f), P(0.015f));
-//        CGContextAddLineToPoint(context, P(0.998f), P(0.044f));
-//        CGContextAddLineToPoint(context, P(0.558f), P(0.605f));
-//        CGContextAddLineToPoint(context, P(0.458f), P(0.681f));
-//        CGContextAddLineToPoint(context, P(0.302f), P(0.425f));
-        CGContextMoveToPoint(context, P(0.267f), P(0.5));
-        CGContextAddLineToPoint(context, P(0.417f), P(0.65f));
-        CGContextAddLineToPoint(context, P(0.717f), P(0.367f));
-        CGContextAddLineToPoint(context, P(0.667f), P(0.317f));
-        CGContextAddLineToPoint(context, P(0.417f), P(0.55f));
-        CGContextAddLineToPoint(context, P(0.333f), P(0.467f));
-        
-        CGContextClosePath(context);
-        
-        CGContextFillPath(context);
-        
-#undef P
+    }
+    else {
+        CGContextSetFillColorWithColor(context, [UNACTIVE_COLOR CGColor]);
     }
     
+    {
+#define P(POINT) (POINT * size)
+    CGContextConcatCTM(context, transform);
+    
+    CGContextBeginPath(context);
+    CGContextMoveToPoint(context, P(0.267f), P(0.5));
+    CGContextAddLineToPoint(context, P(0.417f), P(0.65f));
+    CGContextAddLineToPoint(context, P(0.717f), P(0.367f));
+    CGContextAddLineToPoint(context, P(0.667f), P(0.317f));
+    CGContextAddLineToPoint(context, P(0.417f), P(0.55f));
+    CGContextAddLineToPoint(context, P(0.333f), P(0.467f));
+    
+    CGContextClosePath(context);
+    
+    CGContextFillPath(context);
+    
+#undef P
+    }
     
 }
 

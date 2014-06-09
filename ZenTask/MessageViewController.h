@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ObjectAddProtocol.h"
 
-@interface MessageViewController : UIViewController
+@interface MessageViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, ObjectAddProtocol>
+
+@property (nonatomic) long projectId;
+@property (weak) UIViewController* rootViewController;
 
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TodoView.h"
+#import "Checkbox.h"
 
-@interface TodoCell : UITableViewCell
+@interface TodoCell : UITableViewCell<CheckBoxTappedProtocol>
+
+@property (strong) TodoView *todoView;
+@property (nonatomic, strong) Checkbox *checkBox;
+@property (weak) id<CheckBoxTappedProtocol> delegate;
 
 @end

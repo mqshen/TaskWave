@@ -10,4 +10,8 @@
 
 @interface ProjectTableCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *descriptionLabel;
+@property (nonatomic, strong) UIImageView *imageView;
+
 @end

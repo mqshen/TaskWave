@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TwoLabel.h"
 
 @interface CommentCell : UITableViewCell
+
+@property (strong) UIImageView *avatorView;
+@property (strong) TwoLabel *nameLabel;
+@property (strong) UIWebView *contentLabel;
+
+-(void) setComment:(NSDictionary *) comment;
 
 @end

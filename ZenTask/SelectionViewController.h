@@ -7,7 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataSelectionViewControllerDelegate.h"
 
 @interface SelectionViewController : UIViewController
+
+@property (weak) id<DataSelectionViewControllerDelegate> delegate;
+
+@property (weak) UIViewController *rootViewController;
+
+@property (nonatomic, strong) UIView *backgroundView;
+
+@property (assign, nonatomic) BOOL disableBouncingWhenShowing;
+
+@property (nonatomic, strong) id selectedData;
+
+@property (nonatomic, strong) UIView *dataPicketContainer;
+
+- (void) show;
 
 @end

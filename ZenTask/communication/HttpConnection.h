@@ -15,9 +15,10 @@
 {
 }
 
-+ (void)initWithRequestURL:(NSString *)url
-           successAction:(void (^)(NSString* response)) successHandler;
-
++ (void)initWithRequestURL:(NSString *)urlString
+                httpMethod: (NSString *) httpMethod
+               requestDate:(NSDictionary *)reqParams
+             successAction:(void (^)(id response)) handler;
 //- (id)initWithRequestURL:(NSString *)url params:(NSDictionary *)reqDic target:(id)__target successAction:(SEL)action
 //            failedAction:(SEL)failedAction withSession:(BOOL)sessionFlag withWait:(BOOL)waitFlag;
 

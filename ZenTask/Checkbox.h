@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CheckBoxTappedProtocol <NSObject>
+
+- (void) checkBoxTapped:(id)sender forEvent:(UIEvent*)event;
+
+@end
+
 @interface Checkbox : UIControl
 
 //! The control state.

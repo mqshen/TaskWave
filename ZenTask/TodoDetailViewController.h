@@ -10,4 +10,6 @@
 
 @interface TodoDetailViewController : UITableViewController
 
+@property (nonatomic, strong) NSDictionary *todo;
+
 @end

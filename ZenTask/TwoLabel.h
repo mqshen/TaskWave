@@ -10,4 +10,7 @@
 
 @interface TwoLabel : UIView
 
+@property (strong) NSString *name;
+@property (strong) NSString *description;
+
 @end

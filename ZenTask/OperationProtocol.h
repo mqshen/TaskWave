@@ -10,4 +10,6 @@
 
 @protocol OperationProtocol <NSObject>
 
+-(void) doAdd:(NSInteger) objectId;
+
 @end

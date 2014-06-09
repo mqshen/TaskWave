@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TabSelectDelegate.h"
+#import "ObjectAddProtocol.h"
 
-@interface ProjectViewController : UIViewController
+@interface ProjectViewController : UIViewController<TabSelectDelegate, ObjectAddProtocol>
+
+@property (nonatomic) int projectId;
+
 
 @end

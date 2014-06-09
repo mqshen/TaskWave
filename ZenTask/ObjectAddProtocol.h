@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef enum {
+    TODO,
+    TODO_LIST,
+    MESSAGE,
+    COMMENT
+} ObjectType;
 
 @protocol ObjectAddProtocol <NSObject>
+
+-(void) addObject:(id) object withType:(ObjectType) type;
+
+-(void) updateObject:(id) object withType:(ObjectType) type;
 
 @end

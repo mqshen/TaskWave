@@ -10,6 +10,52 @@
 #warning "This project uses features only available in iOS SDK 3.0 and later."
 #endif
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+//#define SERVER_ADD @"http://localhost:9000/"
+#define SERVER_ADD @"http://101.251.195.186:9001/"
+
+#define H1_FONT [UIFont fontWithName:@"Helvetica" size:16]
+#define H2_FONT [UIFont fontWithName:@"Helvetica" size:14]
+
+#define TEXT_FONT [UIFont fontWithName:@"Helvetica" size:14]
+#define TODO_BUTTON_FONT [UIFont fontWithName:@"Helvetica" size:12]
+
+#define SMALL_TEXT_FONT [UIFont fontWithName:@"Helvetica" size:8]
+
+#define CALENDAR_MONTH_FONT [UIFont fontWithName:@"Helvetica" size:10]
+#define CALENDAR_DAY_FONT [UIFont fontWithName:@"Helvetica" size:20]
+#define CALENDAR_WEEKDAY_FONT [UIFont fontWithName:@"Helvetica" size:10]
+
+
+#define CALENDAR_MONTH_COLOR UIColorFromRGB(0xB0B0B0)
+#define CALENDAR_WEEKDAY_COLOR UIColorFromRGB(0xB0B0B0)
+#define LINE_COLOE UIColorFromRGB(0xE1DEDE)
+
+#define ASSIGN_DATE_FOMAT @"MMM d EEE"
+
+#define COMMIT_DATE_FOMAT @"yyyy-MM-dd"
+
+#define NAVBAR_COLOR UIColorFromRGB(0x0832B4)
+
+#define LOGIN_BACKGROUND_COLOR UIColorFromRGB(0x4C81EC)
+
+#define BUTTON_COLOR UIColorFromRGB(0X5EA1FC)
+
+#define TITLE_COLOR UIColorFromRGB(0x4170C8)
+
+#define ACTIVE_COLOR [UIColor blackColor]
+#define ACTIVE_BACKGROUND_COLOR UIColorFromRGB(0x4C81EC)
+#define EDITOR_BUTTON_COLOR UIColorFromRGB(0x7BCC53)
+#define UNACTIVE_COLOR UIColorFromRGB(0XEDEDED)
+
+#define BACKGROUND_COLOR UIColorFromRGB(0XF2F2F2)
+//#define BUTTON_COLOR UIColorFromRGB(0X85C7D2)
+
+#define ASSIGN_TEXT_COLOR UIColorFromRGB(0X666666)
+#define TEXT_COLOR UIColorFromRGB(0X040404)
+
+
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>

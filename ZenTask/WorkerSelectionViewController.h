@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SelectionViewController.h"
 
-@interface WorkerSelectionViewController : UIViewController
+@interface WorkerSelectionViewController : SelectionViewController
+
+@property (nonatomic) long projectId;
 
 @end

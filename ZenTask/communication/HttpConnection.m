@@ -27,8 +27,9 @@ static MBProgressHUD *hud;
 
 
 + (void)initWithRequestURL:(NSString *)urlString
-           successAction:(void (^)(NSString* response)) handler
-//                withWait:(BOOL)waitFlag
+                httpMethod: (NSString *) httpMethod
+               requestDate:(NSDictionary *)reqParams
+           successAction:(void (^)(id response)) handler
 {
     
         if ([self connectedToNetwork]) {
@@ -39,11 +40,55 @@ static MBProgressHUD *hud;
                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:appwindow.window animated:YES];
                 hud.labelText = @"Loading";
             }
-            NSURL *reqURL = [NSURL URLWithString:urlString];
+            NSString *urlRequestString = [SERVER_ADD stringByAppendingString:urlString];
             
-            NSURLRequest *request = [NSURLRequest requestWithURL:reqURL
-                                                      cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                  timeoutInterval:60.0];
+            
+            
+            NSMutableString *dataString = [[NSMutableString alloc] initWithString:@""];
+            if (reqParams != nil) {
+                for (NSString *keyString in [reqParams allKeys]) {
+                    id requestValue = [reqParams objectForKey:keyString];
+                    if ([requestValue isKindOfClass:([NSArray class])]) {
+                        NSArray *requestArray = (NSArray *)requestValue;
+                        for (NSDictionary *deatil in requestArray) {
+                            for (NSString *deatilKeyString in [deatil allKeys]) {
+                                NSString *value = [deatil objectForKey:deatilKeyString];
+                                NSString *keyAndValue = [NSString stringWithFormat:@"%@.%@=%@&", keyString, deatilKeyString, value];
+                                [dataString appendString:keyAndValue];
+                            }
+                        }
+                    }
+                    else {
+                        NSString *value = [reqParams objectForKey:keyString];
+                        NSString *keyAndValue = [NSString stringWithFormat:@"%@=%@&",keyString,value];
+                        [dataString appendString:keyAndValue];
+                    }
+                }
+                /*
+                 NSRange range = {0,[dataString length] -1};
+                 NSString *postString = [dataString substringWithRange:range];
+                 [dataString release];
+                 */
+            }
+           
+            if([httpMethod compare:@"get"] == 0) {
+                urlRequestString = [[urlRequestString stringByAppendingString:@"?" ] stringByAppendingString:dataString];
+            }
+            
+            NSURL *reqURL = [NSURL URLWithString:urlRequestString];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:reqURL
+                                                                   cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                               timeoutInterval:60.0];
+            
+            [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+            request.HTTPMethod = httpMethod;
+            
+            if ([httpMethod compare:@"post"] == 0) {
+                if (reqParams != nil) {
+                    NSData *requestBodyData = [dataString dataUsingEncoding:NSUTF8StringEncoding];
+                    request.HTTPBody = requestBodyData;
+                }
+            }
             
             [NSURLConnection sendAsynchronousRequest:request
                                                queue:[NSOperationQueue mainQueue] 
@@ -51,14 +96,25 @@ static MBProgressHUD *hud;
                                        if (--hudCount == 0) {
                                            [MBProgressHUD hideHUDForView:appwindow.window animated:YES];
                                        }
-                                       NSString *responseString = [[NSString alloc] initWithData:data
-                                                                                        encoding:NSUTF8StringEncoding];
-                                       handler(responseString);
+                                       if (data) {
+                                           NSDictionary *responseDic = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                       options:NSJSONReadingMutableContainers
+                                                                                                         error:nil];
+                                           NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                                           
+                                           NSLog(@"response:%@", newStr);
+                                           if([responseDic objectForKey:@"teamId"] == 0)
+                                               handler([responseDic objectForKey:@"content"]);
+                                       }
                                    }];
             
         }
         else {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"网络未连接,请检查您的网络。" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                                message:@"网络未连接,请检查您的网络。"
+                                                               delegate:nil
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"确定", nil];
             [alertView show];
         }
         

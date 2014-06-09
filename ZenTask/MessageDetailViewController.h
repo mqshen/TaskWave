@@ -10,4 +10,6 @@
 
 @interface MessageDetailViewController : UITableViewController
 
+@property (nonatomic, strong) NSDictionary *message;
+
 @end
