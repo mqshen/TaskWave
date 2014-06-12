@@ -104,6 +104,12 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
+    NSLog(@"%f", self.frame.origin.y);
+    CGRect frame = self.frame;
+    CGFloat top = 10.f;
+    if (frame.origin.y < 70 && frame.origin.y + frame.size.height > 121) {
+        top += fabs(frame.origin.y - 60) ;
+    }
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -122,14 +128,14 @@
     NSString *month = [dateFormatter stringFromDate:date];
     
     
-    [month drawAtPoint:CGPointMake(Calendar_Padding, 10) withAttributes:attributes];
+    [month drawAtPoint:CGPointMake(Calendar_Padding, top) withAttributes:attributes];
     
     [dateFormatter setDateFormat:@"d"];
     NSString *day = [dateFormatter stringFromDate:date];
     
     NSDictionary *dayAttributes = [NSDictionary dictionaryWithObjectsAndKeys:CALENDAR_DAY_FONT, NSFontAttributeName,
                                 TEXT_COLOR, NSForegroundColorAttributeName, nil];
-    [day drawAtPoint:CGPointMake(Calendar_Padding, 26) withAttributes:dayAttributes];
+    [day drawAtPoint:CGPointMake(Calendar_Padding, top + 16) withAttributes:dayAttributes];
     
     
     [dateFormatter setDateFormat:@"EEE"];
@@ -137,7 +143,7 @@
     
     NSDictionary *weekAttributes = [NSDictionary dictionaryWithObjectsAndKeys:CALENDAR_WEEKDAY_FONT, NSFontAttributeName,
                                    color, NSForegroundColorAttributeName, nil];
-    [weekday drawAtPoint:CGPointMake(Calendar_Padding, 50) withAttributes:weekAttributes];
+    [weekday drawAtPoint:CGPointMake(Calendar_Padding, top + 40) withAttributes:weekAttributes];
     
     
     

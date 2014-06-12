@@ -28,6 +28,8 @@
 
 @implementation CalendarViewController
 
+@synthesize delegate;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -173,6 +175,10 @@
     // Configure the cell...
 }
 
+- (void) tableView:(UILoopTableView *)tableView gestureDidChange:(UIPanGestureRecognizer *)panGesture
+{
+    [delegate panGestureCallback:panGesture];
+}
 /*
  #pragma mark - Navigation
  

@@ -21,7 +21,7 @@
 
 @property (nonatomic, assign) CGFloat landscapeSlideOffset;
 
-@property (nonatomic, strong) UIViewController * centerViewController;
+@property (nonatomic, strong) UINavigationController* centerViewController;
 
 @property (nonatomic, strong) UIViewController * leftViewController;
 
@@ -53,8 +53,8 @@
         self.centerViewController = centerNav;
         
         leftViewController.delegate = self;
-        UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftViewController];
-        self.leftViewController = leftNav;
+        //UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:leftViewController];
+        self.leftViewController = leftViewController;
         self.menuRevealAnimator = [[SlideNavigationContorllerAnimatorSlide alloc] init];
         
         
@@ -160,6 +160,10 @@
 }
 
 -(void)panGestureCallback:(UIPanGestureRecognizer *)panGesture {
+    NSInteger viewControllerCount = [[self.centerViewController viewControllers] count];
+    if (viewControllerCount > 1) {
+        return;
+    }
     CGPoint translation = [panGesture translationInView:self.view];
     CGPoint velocity = [panGesture velocityInView:self.view];
 	NSInteger movement = translation.x - self.draggingPoint.x;
@@ -278,6 +282,10 @@
         //[self.view addSubview:menuButton];
         viewController.navigationItem.leftBarButtonItem = menuButton;
     
+    if([viewController respondsToSelector:@selector(setDelegate:)]) {
+        [viewController performSelector:@selector(setDelegate:) withObject:self];
+    }
+    
     UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:viewController];
     self.centerViewController = centerNav;
     self.centerViewController.view.frame = frame;
@@ -290,6 +298,7 @@
     centerNav.view.layer.rasterizationScale = [UIScreen mainScreen].scale;
     
     [self.view addSubview:self.centerViewController.view];
+    
     
     [self closeMenuWithCompletion:nil];
 }

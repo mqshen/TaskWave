@@ -22,6 +22,7 @@
 - (void)tableView:(UILoopTableView *)tableView willBeginEditingRowAtIndex:(NSNumber *) index;
 - (void)tableView:(UILoopTableView *)tableView didEndEditingRowAtIndexPath:(NSNumber *) index;
 - (NSString *)tableView:(UILoopTableView *)tableView titleForDeleteConfirmationButtonForRowAtIndex:(NSNumber *) index;
+- (void) tableView:(UILoopTableView *)tableView gestureDidChange:(UIPanGestureRecognizer *)panGesture;
 
 @end
 

@@ -74,7 +74,8 @@
     self.emailView.tintColor = [UIColor blackColor];
     self.emailView.keyboardType = UIKeyboardTypeEmailAddress;
     [itemView addSubview:self.emailView];
-    self.emailView.text = @"goldratio87@gmail.com";
+    //self.emailView.text = @"goldratio87@gmail.com";
+    self.emailView.text = @"mqshen@126.com";
     self.emailView.delegate = self;
     
     [self.view addSubview:itemView];

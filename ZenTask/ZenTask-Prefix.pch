@@ -55,6 +55,13 @@
 #define ASSIGN_TEXT_COLOR UIColorFromRGB(0X666666)
 #define TEXT_COLOR UIColorFromRGB(0X040404)
 
+#define MENU_BACKGROUND_COLOR UIColorFromRGB(0x555555)
+#define MENU_ACTIVE_COLOR UIColorFromRGB(0x474747)
+#define MENU_TEXT_COLOR UIColorFromRGB(0x959595)
+#define MENU_ACTIVE_TEXT_COLOR UIColorFromRGB(0xACBDB7)
+
+#define MENU_FONT [UIFont fontWithName:@"Helvetica" size:15]
+
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>

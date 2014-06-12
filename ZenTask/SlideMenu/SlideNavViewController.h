@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "SlideNavigationContorllerAnimator.h"
+#import "PanGestureDelegate.h"
 
-@interface SlideNavViewController : UIViewController<UINavigationControllerDelegate>
+@interface SlideNavViewController : UIViewController<UINavigationControllerDelegate, PanGestureDelegate>
 
 @property (nonatomic, strong) id <SlideNavigationContorllerAnimator> menuRevealAnimator;
 

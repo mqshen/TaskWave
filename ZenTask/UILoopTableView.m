@@ -67,6 +67,7 @@ typedef enum {
         unsigned willBeginEditingRowAtIndex: 1;
         unsigned didEndEditingRowAtIndex: 1;
         unsigned titleForDeleteConfirmationButtonForRowAtIndexPath: 1;
+        unsigned gestureDidChange : 1;
     } _delegateHas;
     
     struct {
@@ -134,6 +135,8 @@ typedef enum {
     _delegateHas.willDeselectRowAtIndex= [newDelegate respondsToSelector:@selector(tableView:willDeselectRowAtIndex:)];
     _delegateHas.didDeselectRowAtIndex= [newDelegate respondsToSelector:@selector(tableView:didDeselectRowAtIndex:)];
     _delegateHas.willBeginEditingRowAtIndex= [newDelegate respondsToSelector:@selector(tableView:willBeginEditingRowAtIndex:)];
+    _delegateHas.gestureDidChange = [newDelegate respondsToSelector:@selector(tableView:gestureDidChange:)];
+
     _delegateHas.titleForDeleteConfirmationButtonForRowAtIndexPath = [newDelegate respondsToSelector:@selector(tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:)];
 }
 
@@ -212,27 +215,6 @@ typedef enum {
     // so this simple call should be good enough.
     return [_cachedCells objectForKey:indexPath];
 }
-
-
-//- (NSArray *)indexPathsForVisibleRows
-//{
-//    [self _layoutTableView];
-//    
-//    NSMutableArray *indexes = [NSMutableArray arrayWithCapacity:[_cachedCells count]];
-//    const CGRect bounds = self.bounds;
-//    
-//    // Special note - it's unclear if UIKit returns these in sorted order. Because we're assuming that visibleCells returns them in order (top-bottom)
-//    // and visibleCells uses this method, I'm going to make the executive decision here and assume that UIKit probably does return them sorted - since
-//    // there's nothing warning that they aren't. :)
-//    
-//    for (NSNumber *index in [[_cachedCells allKeys] sortedArrayUsingSelector:@selector(compare:)]) {
-//        if (CGRectIntersectsRect(bounds,[self rectForRowAtIndex:index])) {
-//            [indexes addObject:index];
-//        }
-//    }
-//    
-//    return indexes;
-//}
 
 
 - (void)setTableHeaderView:(UIView *)newHeader
@@ -455,11 +437,19 @@ typedef enum {
 
 - (void)_gestureDidChange:(UIPanGestureRecognizer *)panGesture
 {
+    if (fabs([panGesture velocityInView:self].y * 2) < fabs([panGesture velocityInView:self].x)){
+        NSLog(@"test %f, %f", [panGesture velocityInView:self].y, [panGesture velocityInView:self].x);
+        if (_delegateHas.gestureDidChange) {
+            [_delegate tableView:self gestureDidChange:panGesture];
+        }
+    }
+    else {
         switch (panGesture.state) {
             case UIGestureRecognizerStateBegan: {
                 _dragging = YES;
                 _scrolling = NO;
                 _decelerating = NO;
+                
                 _previousTranslation = _vertical? [panGesture translationInView:self].y: [panGesture translationInView:self].x;
                 //[_delegate carouselWillBeginDragging:self];
                 break;
@@ -488,6 +478,7 @@ typedef enum {
                 [self didScroll];
             }
         }
+    }
 }
 
 - (NSInteger)minScrollDistanceFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex
@@ -687,6 +678,9 @@ typedef enum {
     CGRect frame = view.frame;
     frame.origin.y += _scrollOffset;
     view.frame = frame;
+    if (frame.origin.y < 60 && frame.origin.y + frame.size.height > 121) {
+        [view setNeedsDisplay];
+    }
 }
 
 

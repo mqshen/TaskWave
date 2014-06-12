@@ -78,6 +78,14 @@
 		F1B2F24E19372D34009775F2 /* UIPlaceHolderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B2F24D19372D34009775F2 /* UIPlaceHolderTextView.m */; };
 		F1B2F2521937361C009775F2 /* KeyBoardTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F1B2F2511937361C009775F2 /* KeyBoardTopBar.m */; };
 		F1CB3DE8193DB5C2008F9ACE /* bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CB3DE7193DB5C2008F9ACE /* bg@2x.png */; };
+		F1CC076B19489C0F00FA37F8 /* menu-calendar-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CC076319489C0F00FA37F8 /* menu-calendar-selected.png */; };
+		F1CC076C19489C0F00FA37F8 /* menu-calendar-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CC076419489C0F00FA37F8 /* menu-calendar-selected@2x.png */; };
+		F1CC076D19489C0F00FA37F8 /* menu-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CC076519489C0F00FA37F8 /* menu-calendar.png */; };
+		F1CC076E19489C0F00FA37F8 /* menu-calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CC076619489C0F00FA37F8 /* menu-calendar@2x.png */; };
+		F1CC076F19489C0F00FA37F8 /* menu-projects-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CC076719489C0F00FA37F8 /* menu-projects-selected.png */; };
+		F1CC077019489C0F00FA37F8 /* menu-projects-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CC076819489C0F00FA37F8 /* menu-projects-selected@2x.png */; };
+		F1CC077119489C0F00FA37F8 /* menu-projects.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CC076919489C0F00FA37F8 /* menu-projects.png */; };
+		F1CC077219489C0F00FA37F8 /* menu-projects@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F1CC076A19489C0F00FA37F8 /* menu-projects@2x.png */; };
 		F1F1649E1944948C007E28D6 /* calendar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F1649D1944948C007E28D6 /* calendar_bg.png */; };
 /* End PBXBuildFile section */
 
@@ -213,6 +221,15 @@
 		F1B2F2501937361C009775F2 /* KeyBoardTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyBoardTopBar.h; sourceTree = "<group>"; };
 		F1B2F2511937361C009775F2 /* KeyBoardTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyBoardTopBar.m; sourceTree = "<group>"; };
 		F1CB3DE7193DB5C2008F9ACE /* bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg@2x.png"; sourceTree = "<group>"; };
+		F1CC076319489C0F00FA37F8 /* menu-calendar-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-calendar-selected.png"; sourceTree = "<group>"; };
+		F1CC076419489C0F00FA37F8 /* menu-calendar-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-calendar-selected@2x.png"; sourceTree = "<group>"; };
+		F1CC076519489C0F00FA37F8 /* menu-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-calendar.png"; sourceTree = "<group>"; };
+		F1CC076619489C0F00FA37F8 /* menu-calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-calendar@2x.png"; sourceTree = "<group>"; };
+		F1CC076719489C0F00FA37F8 /* menu-projects-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-projects-selected.png"; sourceTree = "<group>"; };
+		F1CC076819489C0F00FA37F8 /* menu-projects-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-projects-selected@2x.png"; sourceTree = "<group>"; };
+		F1CC076919489C0F00FA37F8 /* menu-projects.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-projects.png"; sourceTree = "<group>"; };
+		F1CC076A19489C0F00FA37F8 /* menu-projects@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-projects@2x.png"; sourceTree = "<group>"; };
+		F1D037F81948045B00BC8C4D /* PanGestureDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanGestureDelegate.h; sourceTree = "<group>"; };
 		F1F1649D1944948C007E28D6 /* calendar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_bg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +311,14 @@
 		F1471DE81935E5CB0050FB32 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				F1CC076319489C0F00FA37F8 /* menu-calendar-selected.png */,
+				F1CC076419489C0F00FA37F8 /* menu-calendar-selected@2x.png */,
+				F1CC076519489C0F00FA37F8 /* menu-calendar.png */,
+				F1CC076619489C0F00FA37F8 /* menu-calendar@2x.png */,
+				F1CC076719489C0F00FA37F8 /* menu-projects-selected.png */,
+				F1CC076819489C0F00FA37F8 /* menu-projects-selected@2x.png */,
+				F1CC076919489C0F00FA37F8 /* menu-projects.png */,
+				F1CC076A19489C0F00FA37F8 /* menu-projects@2x.png */,
 				F1F1649D1944948C007E28D6 /* calendar_bg.png */,
 				F152E3F4193DC05F0084B229 /* bg.png */,
 				F1CB3DE7193DB5C2008F9ACE /* bg@2x.png */,
@@ -382,6 +407,7 @@
 				F1567E2E193B224A000E2DDC /* TwoLabel.m */,
 				F1628DCB193CC8CF00873C09 /* PartWebView.h */,
 				F1628DCC193CC8CF00873C09 /* PartWebView.m */,
+				F1D037F81948045B00BC8C4D /* PanGestureDelegate.h */,
 			);
 			path = ZenTask;
 			sourceTree = "<group>";
@@ -596,9 +622,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1F1649E1944948C007E28D6 /* calendar_bg.png in Resources */,
+				F1CC076E19489C0F00FA37F8 /* menu-calendar@2x.png in Resources */,
 				F15B7E8E193235060043C15D /* InfoPlist.strings in Resources */,
 				F160C17819331CEA001FA9EF /* menu-button@2x.png in Resources */,
+				F1CC076B19489C0F00FA37F8 /* menu-calendar-selected.png in Resources */,
+				F1CC077219489C0F00FA37F8 /* menu-projects@2x.png in Resources */,
+				F1CC076C19489C0F00FA37F8 /* menu-calendar-selected@2x.png in Resources */,
 				F1B2F24B1937250D009775F2 /* worker@2x.png in Resources */,
+				F1CC076F19489C0F00FA37F8 /* menu-projects-selected.png in Resources */,
 				F1471DE71935E55E0050FB32 /* add@2x.png in Resources */,
 				F1567E29193B137A000E2DDC /* worker_small@2x.png in Resources */,
 				F1471DEA1935E5DE0050FB32 /* add.png in Resources */,
@@ -607,14 +638,17 @@
 				F1471DE31935DAD40050FB32 /* default.png in Resources */,
 				F1567E26193B137A000E2DDC /* time_samll.png in Resources */,
 				F1567E31193B5B0C000E2DDC /* attachment.png in Resources */,
+				F1CC077019489C0F00FA37F8 /* menu-projects-selected@2x.png in Resources */,
 				F152E3F5193DC05F0084B229 /* bg.png in Resources */,
 				F160C184193335EC001FA9EF /* project@2x.png in Resources */,
 				F160C183193335EC001FA9EF /* project.png in Resources */,
+				F1CC077119489C0F00FA37F8 /* menu-projects.png in Resources */,
 				F1B2F24A1937250D009775F2 /* worker.png in Resources */,
 				F15B7E96193235060043C15D /* Images.xcassets in Resources */,
 				F160C17719331CEA001FA9EF /* menu-button.png in Resources */,
 				F1B2F2481937250D009775F2 /* time.png in Resources */,
 				F1471DE61935E55E0050FB32 /* add_event@2x.png in Resources */,
+				F1CC076D19489C0F00FA37F8 /* menu-calendar.png in Resources */,
 				F1B2F2491937250D009775F2 /* time@2x.png in Resources */,
 				F1CB3DE8193DB5C2008F9ACE /* bg@2x.png in Resources */,
 			);
